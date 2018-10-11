@@ -4,7 +4,11 @@ import java.util.Scanner;
 
 /**
  * @author TODO: please add student ID and name here
+ *  * B0444241 胡洺碩
  * Try to write some comments for your codes (methods, 15 points)
+ * 首先在Card的class中，用兩個switch迴圈分別處理su、rk這兩個變數，su拿來存放花色，rk用來存放1~13，最後用System.out.println print出來。
+ * 再來在Dec的class中，先用三個for迴圈，最外面一層是根據幾副牌決定裡面那兩個要跑幾次，中間那層是因為有四種花色所以跑四次，最裡面一層是因為一種花色有13張所以跑13次。
+ * 在printDec中使用for迴圈裡面放get來抓陣列裡的資料，使用printCard這個method來印出來
  */
 public class HW2 {
 
@@ -26,8 +30,8 @@ public class HW2 {
 	}
 	/**
 	 * This method is used for checking your result, not a part of your HW2
-	 * @param allCards 所有的牌
-	 * @param nDeck 總共有幾副牌
+	 * @param allCards �������
+	 * @param nDeck 蝮賢��嗾����
 	 * @return
 	 */
 	private static boolean isAllCardsCorrect(ArrayList<Card> allCards,int nDeck){
@@ -78,12 +82,29 @@ class Deck{
 		//cards.add(card);
 		//Sample code end
 
+		for (int i = 1; i <= nDeck; i++) {
+			for (int j = 1; j <= 4; j++) {
+				for (int m = 1; m <= 13; m++) {
+					Card card = new Card(j, m);
+					cards.add(card);
+				}
+			}
+		}
+
+		
 	}	
 	//TODO: Please implement the method to print all cards on screen (10 points)
 	public void printDeck(){
 		//Hint: print all items in ArrayList<Card> cards, 
 		//TODO: please implement and reuse printCard method in Card class (5 points)
 
+		
+		for(int l = 0; l < cards.size(); l++) {
+			Card takecard = cards.get(l);
+			takecard.printCard();
+		}
+
+		
 	}
 	public ArrayList<Card> getAllCards(){
 		return cards;
@@ -107,6 +128,81 @@ class Card{
 	public void printCard(){
 		//Hint: print (System.out.println) card as suit,rank, for example: print 1,1 as Clubs Ace
 
+		String su = "";
+		String rk = "";
+
+		switch (suit) {
+		case 1:
+			su = "Clubs";
+			break;
+			
+		case 2:
+			su = "Diamonds";
+			break;
+			
+		case 3:
+			su = "Hearts";
+			break;
+			
+		case 4:
+			su = "Spades";
+			break;
+		}
+
+		switch (rank) {
+		case 1:
+			rk = "Ace";
+			break;
+			
+		case 2:
+			rk = "Two";
+			break;
+			
+		case 3:
+			rk = "Three";
+			break;
+			
+		case 4:
+			rk = "Four";
+			break;
+			
+		case 5:
+			rk = "Five";
+			break;
+			
+		case 6:
+			rk = "Six";
+			break;
+			
+		case 7:
+			rk = "Seven";
+			break;
+			
+		case 8:
+			rk = "Eight";
+			break;
+			
+		case 9:
+			rk = "Nine";
+			break;
+			
+		case 10:
+			rk = "Ten";
+			break;
+			
+		case 11:
+			rk = "Jack";
+			break;
+			
+		case 12:
+			rk = "Queen";
+			break;
+			
+		case 13:
+			rk = "King";
+			break;
+		}
+		System.out.println(suit + "," + rank + " as " + su + " " + rk);
 	}
 	public int getSuit(){
 		return suit;
